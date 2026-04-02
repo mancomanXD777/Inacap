@@ -1,0 +1,64 @@
+body {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    color: black;
+}
+
+/* CÓDIGO BINARIO - INVISIBLE */
+.codigo-binario {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(0, 0, 0, 0); /* Invisible pero presente en el DOM */
+    font-size: 12px;
+    font-family: monospace;
+    white-space: pre;
+    pointer-events: none;
+}
+
+/* FLECHA INVISIBLE APUNTANDO AL BOTÓN */
+.flecha {
+    position: fixed;
+    bottom: 150px;
+    right: 120px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 40px solid rgba(0, 0, 0, 0); /* Invisible */
+    opacity: 0; /* Completamente invisible */
+}
+
+/* BOTÓN OCULTO EN ESQUINA INFERIOR LATERAL */
+.ing {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    opacity: 0; /* Invisible pero funcional */
+    pointer-events: auto; /* Sigue siendo clickeable */
+}
+
+.ing a {
+    color: black;
+    text-decoration: none;
+}
+
+.ing a:visited {
+    color: black;
+}
+
+.ing a:hover {
+    color: black;
+}
