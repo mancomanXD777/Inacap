@@ -1,3 +1,32 @@
+body{
+    background-color: black;
+    margin: auto;
+    height: auto;
+    width: auto;
+}
+
+.sustitucion{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 18px;
+    color: #000000;
+    text-align: center;
+}
+
+.binario{
+    font-size: 24px;
+    color: #000000;
+    position: fixed;
+}
+
+.flecha{
+    position: fixed;
+    right: 400px;
+    bottom: 120px;
+    font-size: 300px;
+    line-height: 12px;
+}
 
 .ing {
     position: fixed;
@@ -8,8 +37,7 @@
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    opacity: 0; /* Invisible pero funcional */
-    pointer-events: auto; /* Sigue siendo clickeable */
+    pointer-events: auto;
 }
 
 .ing a {
