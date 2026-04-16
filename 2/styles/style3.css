@@ -25,19 +25,12 @@ p {
     margin-bottom: 20px;
 }
 
-button {
-    background-color: white;
-    color: black;
 
-    border: none;
-    padding: 10px 25px;
-    cursor: pointer;
-}
-button a {
-    color: black;
+a {
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
-button a:visited {
-    color: black;
+a:visited {
+    color: rgb(255, 255, 255);
 }

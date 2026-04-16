@@ -1,0 +1,42 @@
+body {
+    background-color: black;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sustitucion {
+    font-size: 18px;
+    color: #555; /* Contraste mejorado para WCAG */
+    margin: 20px;
+}
+
+.binario {
+    font-size: 24px;
+    color: #555; /* Contraste mejorado para WCAG */
+    margin: 20px;
+}
+
+.flecha {
+    font-size: 150px; /* Reducido para evitar desbordamiento */
+    color: white;
+}
+
+.ing {
+    background-color: #393939;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid transparent;
+}
+
+/* El estado :focus es VITAL para navegación por teclado */
+.ing:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 4px;
+}

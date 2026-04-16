@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style2.css">
+    <title>Sesion - Acceso</title>
+</head>
+<body>
+
+<div class="login-box">
+    <h2>Acceder archivos complejos</h2>
+    
+    <div>
+        <label for="usuarioInput">Nombre:</label>
+        <input type="text" id="usuarioInput" placeholder="Ingresar Usuario">
+    </div>
+    
+    <div>
+        <label for="claveInput">Clave:</label>
+        <input type="password" id="claveInput" placeholder="Ingresar Contraseña">
+    </div>
+    
+    <button onclick="entrar()">Entrar</button>
+
+    <div id="mensajeError" aria-live="assertive"></div>
+
+    <script src="../scripts/script.js"></script>
+</div>
+</body>
+</html>
