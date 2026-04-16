@@ -3,7 +3,6 @@ function entrar() {
     var c = document.getElementById("claveInput").value;
     var errorDiv = document.getElementById("mensajeError");
 
-    // Limpiamos el mensaje previo
     errorDiv.innerHTML = "";
 
     if (u === "esñtp" && c === "Tokyo") {
