@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+</head>
+<body>
+    <div>
+        <label for="usuarioInput">Nombre:</label>
+        <input type="text" id="usuarioInput" placeholder="Ingresar Usuario">
+    </div>
+
+
+    <div>
+        <label for ="correoInput">Correo:</label>
+        <label type="text" id="correoInput" placeholder="Ingrese Correo">
+    </div>
+    
+    <div>
+        <label for="claveInput">Clave:</label>
+        <input type="password" id="claveInput" placeholder="Ingresar Contraseña">
+    </div>
+
+    <div>
+        <label for="claveInputV">Clave:</label>
+        <input type="password" id="claveInputV" placeholder="Verificar Contraseña">
+    </div>
+    
+    <button onclick="registrar()">registrar</button>
+
+    <div id="mensajeError" aria-live="assertive"></div>
+</body>
+</html>
