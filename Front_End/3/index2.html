@@ -1,205 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Misterios de internet</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso|Misterios</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: 'Trebuchet MS', sans-serif;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Trebuchet MS', sans-serif;
+}
 
-    body{
-      background: linear-gradient(to bottom, #050505, #111);
-      color:white;
-      overflow-x:hidden;
-    }
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop')
+    center/cover;
+    color:white;
+}
 
-    header{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      text-align:center;
-      background:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop') center/cover;
-      position:relative;
-    }
+.container{
+    width:400px;
+    background:rgba(20,20,20,0.9);
+    padding:40px;
+    border-radius:20px;
+    border:1px solid #333;
+    box-shadow:0 0 20px rgba(220,20,60,0.3);
+    text-align:center;
+    backdrop-filter:blur(8px);
+}
 
-    header::before{
-      content:"";
-      position:absolute;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.65);
-    }
+h1{
+    font-size:2.5rem;
+    letter-spacing:4px;
+    text-shadow:0 0 15px crimson;
+    animation:glow 2s infinite alternate;
+}
 
-    header h1,
-    header p,
-    header button{
-      position:relative;
-      z-index:2;
-    }
-
-    header h1{
-      font-size:5rem;
-      letter-spacing:6px;
-      text-shadow:0 0 20px crimson;
-      animation:glow 2s infinite alternate;
-    }
-
-    @keyframes glow{
-      from{
+@keyframes glow{
+    from{
         text-shadow:0 0 10px crimson;
-      }
-      to{
-        text-shadow:0 0 30px red;
-      }
     }
+    to{
+        text-shadow:0 0 25px red;
+    }
+}
 
-    header p{
-      margin-top:20px;
-      font-size:1.3rem;
-      max-width:600px;
-      opacity:0.9;
-    }
+p{
+    color:#aaa;
+    margin:15px 0 25px;
+}
 
-    button{
-      margin-top:30px;
-      padding:15px 35px;
-      border:none;
-      background:crimson;
-      color:white;
-      font-size:1rem;
-      cursor:pointer;
-      border-radius:30px;
-      transition:0.3s;
-    }
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:none;
+    outline:none;
+    border-radius:30px;
+    background:#111;
+    color:white;
+    border:1px solid #333;
+    transition:0.3s;
+}
 
-    button:hover{
-      background:black;
-      border:1px solid crimson;
-      transform:scale(1.05);
-    }
+input:focus{
+    border-color:crimson;
+    box-shadow:0 0 15px crimson;
+}
 
-    section{
-      padding:80px 10%;
-    }
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:crimson;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:10px;
+}
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:30px;
-      margin-top:40px;
-    }
+button:hover{
+    background:black;
+    border:1px solid crimson;
+    transform:scale(1.03);
+}
 
-    .card{
-      background:#1b1b1b;
-      padding:25px;
-      border-radius:15px;
-      transition:0.4s;
-      border:1px solid #333;
-      box-shadow:0 0 10px rgba(255,0,0,0.1);
-    }
+.link{
+    margin-top:20px;
+}
 
-    .card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 0 20px crimson;
-    }
+.link a{
+    color:crimson;
+    text-decoration:none;
+}
 
-    .card h3{
-      margin-bottom:15px;
-      color:crimson;
-    }
+.link a:hover{
+    text-decoration:underline;
+}
 
-    footer{
-      text-align:center;
-      padding:30px;
-      background:black;
-      color:#888;
-    }
+.mensaje{
+    margin-top:15px;
+    color:crimson;
+}
 
-    .hidden-message{
-      margin-top:50px;
-      text-align:center;
-      font-size:1.2rem;
-      opacity:0;
-      transition:1s;
-    }
-
-    .show{
-      opacity:1;
-      color:crimson;
-      text-shadow:0 0 10px red;
-    }
-  </style>
+.oculto{
+    display:none;
+}
+</style>
 </head>
+
 <body>
 
-  <header>
+<div class="container">
+
     <h1>Enigmas</h1>
-    <p>
-      Hay secretos enterrados en la oscuridad...
-      Algunos jamás debieron ser descubiertos.
+
+    <p id="titulo">
+        Inicia sesión para descubrir los secretos.
     </p>
 
-    <button onclick="mostrarMensaje()">
-      Descubrir el secreto
-    </button>
-  </header>
+    <form id="formulario">
 
-  <section>
-    <h2>Casos Sin Resolver</h2>
+        <input type="text" id="usuario" placeholder="Usuario" required>
 
-    <div class="cards">
+        <input type="password" id="password" placeholder="Contraseña" required>
 
-      <div class="card">
-        <h3>Cicada3301</h3>
-        <p>
-          El grupo secreto que solo reclutaba a los mas listos (mundialmente).
-        </p>
-      </div>
+        <button type="submit" id="botonPrincipal">
+            Iniciar sesión
+        </button>
 
-      <div class="card">
-        <h3>Crow 64</h3>
-        <p>
-          El juego de nintendo 64 que nunca existio.
-        </p>
-      </div>
+    </form>
 
-      <div class="card">
-        <h3>youareanidiot</h3>
-        <p>
-          El html que mas peligroso (anteriormente).
-        </p>
-      </div>
-
+    <div class="link">
+        <a href="#" onclick="cambiarModo()">
+            <span id="textoCambio">
+                ¿No tienes cuenta? Crear una
+            </span>
+        </a>
     </div>
 
-    <div class="hidden-message" id="mensaje">
-      "No estás solo... alguien te observa desde la oscuridad."
-    </div>
-  </section>
+    <div class="mensaje" id="mensaje"></div>
 
-  <footer>
-    © 2026 Misterio Oscuro | Todos los secretos reservados
-  </footer>
+</div>
 
-  <script>
-    function mostrarMensaje(){
-      document.getElementById("mensaje").classList.add("show");
+<script>
+let modoRegistro = false;
 
-      // sonido misterioso opcional
-      const audio = new Audio(
-        "https://www.soundjay.com/horror/sounds/horror-ambient-1.mp3"
-      );
-      audio.play();
+function cambiarModo(){
+    modoRegistro = !modoRegistro;
+
+    const titulo = document.getElementById("titulo");
+    const boton = document.getElementById("botonPrincipal");
+    const textoCambio = document.getElementById("textoCambio");
+    const mensaje = document.getElementById("mensaje");
+
+    mensaje.textContent = "";
+
+    if(modoRegistro){
+        titulo.textContent = "Crea una cuenta para entrar al misterio.";
+        boton.textContent = "Crear cuenta";
+        textoCambio.textContent = "¿Ya tienes cuenta? Iniciar sesión";
+    }else{
+        titulo.textContent = "Inicia sesión para descubrir los secretos.";
+        boton.textContent = "Iniciar sesión";
+        textoCambio.textContent = "¿No tienes cuenta? Crear una";
     }
-  </script>
+}
+
+document.getElementById("formulario").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const usuario = document.getElementById("usuario").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const mensaje = document.getElementById("mensaje");
+
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    if(modoRegistro){
+
+        const existe = usuarios.find(u => u.usuario === usuario);
+
+        if(existe){
+            mensaje.textContent = "Ese usuario ya existe.";
+            return;
+        }
+
+        usuarios.push({
+            usuario: usuario,
+            password: password
+        });
+
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+        mensaje.textContent = "Cuenta creada correctamente.";
+
+        document.getElementById("formulario").reset();
+
+        cambiarModo();
+
+    }else{
+
+        const usuarioValido = usuarios.find(
+            u => u.usuario === usuario && u.password === password
+        );
+
+        if(usuarioValido){
+
+            localStorage.setItem("usuarioActivo", usuario);
+
+            alert("Bienvenido, " + usuario + ". Los secretos te esperan...");
+
+            window.location.href = "index.html";
+
+        }else{
+            mensaje.textContent = "Usuario o contraseña incorrectos.";
+        }
+    }
+});
+</script>
 
 </body>
 </html>
