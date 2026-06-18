@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Login.css";
+import "../Login.css";
 function Login() {
 
     const [modoRegistro, setModoRegistro] = useState(false);
@@ -66,7 +67,7 @@ function Login() {
     };
 
     return (
-        <div>
+        <div className="container">
 
             <h1>Enigmas</h1>
 
@@ -104,7 +105,9 @@ function Login() {
 
             </form>
 
-            <p>{mensaje}</p>
+            <p className="message">
+                {mensaje}
+            </p>
 
             <button
                 onClick={() =>
