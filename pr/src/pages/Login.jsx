@@ -6,6 +6,8 @@ function Login() {
     const [modoRegistro, setModoRegistro] = useState(false);
     const [usuario, setUsuario] = useState("");
     const [password, setPassword] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [rut, setRut] = useState("");
     const [mensaje, setMensaje] = useState("");
 
     const navigate = useNavigate();
@@ -19,6 +21,16 @@ function Login() {
 
         if (modoRegistro) {
 
+            if (!usuario.trim() || !password.trim() || !correo.trim() || !rut.trim()) {
+                setMensaje("Todos los campos son obligatorios.");
+                return;
+            }
+
+            if (!correo.includes("@") || !correo.includes(".")) {
+                setMensaje("El correo debe contener '@' y '.'.");
+                return;
+            }
+
             const existe = usuarios.find(
                 u => u.usuario === usuario
             );
@@ -30,7 +42,9 @@ function Login() {
 
             usuarios.push({
                 usuario,
-                password
+                password,
+                correo,
+                rut
             });
 
             localStorage.setItem(
@@ -40,6 +54,8 @@ function Login() {
 
             setMensaje("Cuenta creada correctamente.");
             setModoRegistro(false);
+            setCorreo("");
+            setRut("");
 
         } else {
 
@@ -86,13 +102,34 @@ function Login() {
                     placeholder="Usuario"
                     value={usuario}
                     onChange={(e)=>setUsuario(e.target.value)}
+                    required
                 />
+
+                {modoRegistro && (
+                    <>
+                        <input
+                            type="text"
+                            placeholder="Correo electrónico"
+                            value={correo}
+                            onChange={(e)=>setCorreo(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="RUT"
+                            value={rut}
+                            onChange={(e)=>setRut(e.target.value)}
+                            required
+                        />
+                    </>
+                )}
 
                 <input
                     type="password"
                     placeholder="Contraseña"
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)}
+                    required
                 />
 
                 <button>
@@ -120,6 +157,12 @@ function Login() {
                     : "¿No tienes cuenta?"
                 }
             </button>
+
+            <div className="link">
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }}>
+                    ← Volver al Inicio
+                </a>
+            </div>
 
         </div>
     );

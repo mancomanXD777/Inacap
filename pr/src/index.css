@@ -1,0 +1,142 @@
+/* Accessibility Widget Globals */
+.accessibility-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: crimson;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+    z-index: 99999;
+    transition: all 0.3s ease;
+}
+
+.accessibility-btn:hover {
+    transform: scale(1.08) rotate(15deg);
+    box-shadow: 0 0 25px crimson;
+    background: #ff143d;
+}
+
+.accessibility-panel {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 280px;
+    background: rgba(15, 15, 15, 0.96);
+    border: 1.5px solid crimson;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 25px rgba(220, 20, 60, 0.4);
+    z-index: 99998;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    backdrop-filter: blur(8px);
+    animation: slideUpAcc 0.25s ease-out;
+}
+
+@keyframes slideUpAcc {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.acc-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: crimson;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.acc-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.acc-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #cccccc;
+}
+
+.acc-val-display {
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.acc-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.acc-btn-adjust {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid #444444;
+    background: #222222;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.acc-btn-adjust:hover {
+    background: crimson;
+    border-color: crimson;
+}
+
+.acc-slider {
+    flex-grow: 1;
+    accent-color: crimson;
+    cursor: pointer;
+    height: 6px;
+    border-radius: 3px;
+}
+
+.acc-reset-btn {
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    border: 1px dashed crimson;
+    color: crimson;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.acc-reset-btn:hover {
+    background: crimson;
+    color: white;
+    border-style: solid;
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.4);
+}

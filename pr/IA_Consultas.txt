@@ -1,0 +1,56 @@
+========================================================================
+                      IA - CONSULTAS REALIZADAS
+========================================================================
+
+A continuación se detallan las solicitudes e instrucciones que has realizado
+para el desarrollo de este proyecto, compiladas cronológicamente:
+
+1. Transformación del archivo principal (main) a una página separada,
+   manteniendo el estilo del sitio y su temática misteriosa.
+
+2. Creación de una nueva página de inicio (Landing Page) en la ruta raíz (/),
+   la cual contiene en su footer inferior la siguiente información académica:
+   - Esteban Ibañez (Nombre del alumno)
+   - "numero sede TI3031"
+   - "Inacap"
+
+3. Inclusión de un carrusel de imágenes interactivo dentro de la página del
+   dashboard de sesión iniciada (/home), mostrando ilustraciones específicas
+   para los siguientes casos:
+   - Crow 64 (El cuervo)
+   - Cicada 3301 (La polilla)
+   - youareanidiot (Las caras felices de color blanco en fondo negro)
+
+4. Navegación al hacer clic sobre las imágenes del carrusel hacia páginas
+   explicativas de lore de cada enigma. Estas páginas explican el trasfondo,
+   cómo se solucionaron, qué métodos de encriptación se usaron e incluyen
+   demos interactivas para cada enigma (Cifrador César, Código Binario
+   y Simulador Bouncing).
+
+5. Implementación de un sistema CRUD de comentarios en la sesión de agente,
+   que permite a los usuarios publicar y eliminar sus propias pistas
+   o teorías de investigación, reflejando su nombre de usuario.
+
+6. Incorporación de una ventanilla de contacto tipo modal flotante que
+   contiene los datos de Esteban Ibáñez:
+   - Nombre: Esteban Ibañez
+   - Telefono: +56 9 6739 8924
+   - Correo: estebanibanezsaldias@gmail.com
+
+7. Añadir una función de reporte de situación especial dentro de la
+   ventanilla de contacto, donde el usuario debe ingresar su nombre
+   y describir la situación o mensaje, guardándolo de forma local.
+
+8. Reemplazar las imágenes del carrusel por las tres imágenes oficiales
+   provistas de la polilla (Cicada), el cuervo (Crow64) y las caras sonrientes
+   (youareanidiot).
+
+9. Rediseñar y programar el apartado de Inteligencia Artificial para
+   crear una Terminal de Archivos Clasificados conectada a la API de
+   Google Gemini, que emula una consola militar retro con simulación
+   de carga, textos cifrados, efectos de máquina de escribir y un formato
+   de informe confidencial.
+
+========================================================================
+                       INTERNET MYSTERIES ARCHIVE
+========================================================================
