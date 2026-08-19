@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from holitas import views as app1
+from holi import views as app2
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('holitas/', app1.display),
+    path('holitas/datetime/', app1.displayDateTime),
+    path('holi/', app2.saludo),
 ]
