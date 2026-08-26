@@ -12,3 +12,10 @@ def displayDateTime(request):
     dt = datetime.datetime.now()
     s = "<b>Fecha y hora actual: </b>" + str(dt)
     return HttpResponse(s)
+
+def mostrar_render (request):
+    contexto = {
+        'nombre' : 'Inacapito',
+
+    }
+    return render (request, 'ejemplo1.html', contexto)

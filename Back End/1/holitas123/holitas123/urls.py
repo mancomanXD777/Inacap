@@ -25,4 +25,5 @@ urlpatterns = [
     path('holitas/', app1.display),
     path('holitas/datetime/', app1.displayDateTime),
     path('holi/', app2.saludo),
+    path('render/', app1.mostrar_render, name= 'render')
 ]
