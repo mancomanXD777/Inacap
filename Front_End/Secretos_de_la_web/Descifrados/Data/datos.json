@@ -1,0 +1,50 @@
+[
+
+{
+    "id": 1,
+    "titulo": "Codigo Cesar",
+    "descripcion": "Mueve el alfabeto un numero determinado de posiciones, para codificar un mensaje.",
+    "imagen": "Descifrados/cesar.png"
+
+},
+
+{
+    "id": 2,
+    "titulo": "Codigo Vigenere",
+    "descripcion": "cifra el mensaje utilizando una palabra clave, que determina el desplazamiento de cada letra del mensaje.",
+    "imagen": "Descifrados/vigenere.png"
+
+},
+
+{
+    "id": 3,
+    "titulo": "morse",
+    "descripcion": "Utiliza puntos y rayas para representar letras y números.",
+    "imagen": "Descifrados/img/morse.png"
+
+},
+
+{
+    "id": 4,
+    "titulo": "Base64",
+    "descripcion": "Convierte datos binarios en una cadena de texto ASCII, para facilitar su transmisión en redes.",
+    "imagen": "Descifrados/img/base64.png"
+
+},
+
+{
+    "id": 5,
+    "titulo": "Numerico",
+    "descripcion": "Convierte el alfabeto en números, asignando un valor a cada letra.",
+    "imagen": "Descifrados/img/cesar.png"
+
+},
+
+{
+    "id": 6,
+    "titulo": "Binario",
+    "descripcion": "Representa los datos utilizando solo dos símbolos, generalmente 0 y 1.",
+    "imagen": "Descifrados/img/binario.png"
+
+}
+]
