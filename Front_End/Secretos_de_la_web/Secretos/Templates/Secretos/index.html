@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Misterios de internet</title>
+  <link rel="stylesheet" href="{% static 'Secretos/style.css' %}">
+
+</head>
+<body>
+
+  <header>
+    <h1>Enigmas</h1>
+    <p>
+      Hay secretos enterrados en la oscuridad...
+      Algunos jamás debieron ser descubiertos.
+    </p>
+
+    <button onclick="">
+      Descubrir el secreto
+    </button>
+  </header>
+
+  <section>
+    <h2>Casos Sin Resolver</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Cicada3301</h3>
+        <p>
+          El grupo secreto que solo reclutaba a los mas listos (mundialmente).
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Crow 64</h3>
+        <p>
+          El juego de nintendo 64 que nunca existio.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>youareanidiot</h3>
+        <p>
+          El html que mas peligroso (anteriormente).
+        </p>
+      </div>
+
+    </div>
+
+    <div class="hidden-message" id="mensaje">
+      "No estás solo... alguien te observa desde la oscuridad."
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Misterio Oscuro | Todos los secretos reservados
+  </footer>
+
+</body>
+</html>

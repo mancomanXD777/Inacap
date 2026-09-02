@@ -1,56 +1,89 @@
 ### Purpose
 Provide brief, actionable guidance for AI coding agents working in this workspace.
 
-Overview
-- This repository is a collection of small front-end and Python examples (not a single app):
-  - `pr/` — React + Vite app (primary interactive project).
-  - `candy/` — Deno/Vite experiments and assets.
-  - `Front_End/` — static HTML/CSS/JS examples and exercises.
-  - `Base de Datos/` — Python scripts and small database examples.
+## Overview
+- **Multi-project workspace** (not a monolithic app):
+  - `pr/` — React 19 + Vite SPA (primary interactive project)
+  - `Back End/1/holitas123/` — Django 5.1 project with two apps (holitas, holi)
+  - `Front_End/` — static HTML/CSS/JS examples and learning exercises
+  - `candy/` — Deno/Vite experiments
+  - `Base de Datos/`, `POOS/` — standalone Python scripts and examples
 
-Key files
-- `pr/package.json`: npm scripts and dependencies for the React app.
-- `pr/src/main.jsx`: application entry — mounts `App` into `#root`.
-- `pr/src/App.jsx`: intended router + top-level component (contains an incomplete router scaffold; run the dev server to reveal syntax issues).
+## Key Architecture & Patterns
 
-Developer workflows (explicit)
-- Start the React app:
+### React App (`pr/`)
+- **React 19 + Vite + React Compiler** — uses Babel plugin for automatic component memoization
+- **Core routing** (React Router v7):
+  - `/` → Landing (intro page)
+  - `/login` → Login (user authentication, stores user in localStorage)
+  - `/home` → Home (scrollable carousel of "lore" items from hardcoded array)
+  - `/lore/:id` → Lore detail page (displays specific lore story)
+  - `/terminal` → Terminal emulator page
+- **Accessibility is built-in** — floating `♿` button reveals panel to adjust:
+  - Brightness (50-150%, via `document.documentElement.style.filter`)
+  - Font size (12-24px, via `document.documentElement.style.fontSize`)
+  - Settings persist to localStorage as `global_brightness` and `global_font_size`
+- **State management**: localStorage-based (user session: `usuarioActivo`, accessibility: brightness/fontSize)
+- **CSS per-page**: `Home.css`, `Landing.css`, `Login.css`, `Lore.css`, `Terminal.css` alongside `.jsx` files
+- **Components**: `contacto.jsx`, `home.jsx` (note: `home.jsx` differs from `pages/Home.jsx`)
 
-  cd pr
-  npm install
-  npm run dev
+### Django Backend (`Back End/1/holitas123/`)
+- Two apps: `holitas` (with template `ejemplo1.html`) and `holi`
+- URL routes: `/admin/`, `/holitas/`, `/holitas/datetime/`, `/holi/`, `/render/`
+- SQLite database (`db.sqlite3`)
+- No API integration visible with React app yet
 
-- Build / preview:
+## Essential Workflows
 
-  npm run build
-  npm run preview
+### React App
+```bash
+cd pr
+npm install          # First time only
+npm run dev          # Start Vite dev server (HMR enabled)
+npm run build        # Production build → dist/
+npm run preview      # Preview build output
+npm run lint         # ESLint check (no --fix by default)
+```
 
-- Lint:
+### Django Backend
+```bash
+cd "Back End/1/holitas123"
+python manage.py runserver
+python manage.py migrate
+```
 
-  npm run lint
+## Project-Specific Conventions
 
-Project-specific conventions & notes
-- This workspace is structured as multiple independent examples rather than a monolithic app. Make edits only within the subproject you intend to change (e.g., `pr/` for React work).
-- The `pr/` project uses Vite and the React Compiler (see `pr/README.md`) — expect the compile pipeline to run differently than old Create React App setups.
-- ESLint is present in `pr/` via devDependencies. Follow the existing lint rules; the project favors modern React + hooks patterns.
-- Some files appear incomplete or contain syntax errors (for example `pr/src/App.jsx`). Before making large refactors, run `npm run dev` to reproduce runtime/compile errors and use Vite's HMR to iterate.
+- **Scope isolation**: Only modify files within the subproject you're working on (e.g., don't change `pr/` files when working on Django)
+- **Accessibility-first**: New React pages should inherit brightness/fontSize from App's context or respect localStorage values
+- **Route naming**: Use kebab-case in paths, PascalCase for component names (existing: `Landing`, `Login`, `Home`, `Lore`, `Terminal`)
+- **Page exports**: All page components are default exports in `pr/src/pages/`
+- **Styling**: Local CSS files per page (not CSS-in-JS or Tailwind)
+- **No TypeScript**: Use plain `.jsx` and `.py`; no type annotations required
 
-Integration points and dependencies
-- Frontend: `react`, `react-dom`, `vite`, `@vitejs/plugin-react`. See `pr/package.json` for exact versions.
-- There are no centralized build/test pipelines across subfolders — each subproject (if any) handles its own tooling.
+## Common Edit Patterns
 
-How an AI agent should approach changes
-1. Identify the target subproject (e.g., `pr/`). Work only inside that folder unless cross-project changes are explicitly requested.
-2. Install and run the local dev server to surface errors (`npm install && npm run dev` in the subproject).
-3. Open the entry and router files first: `pr/src/main.jsx` and `pr/src/App.jsx` to understand mounting and routing.
-4. Prefer tiny, iterative fixes with the dev server open to validate behavior. Use ESLint (`npm run lint`) as a quick static check.
-5. When adding or renaming files, mirror the lightweight patterns used elsewhere (static HTML in `Front_End/`, single-file demos, minimal bundler config).
+1. **Add new route**: 
+   - Create new page in `pr/src/pages/NewPage.jsx`
+   - Import in `App.jsx` and add `<Route path="/new" element={<NewPage />}/>`
+   - Add corresponding `.css` file
 
-Examples from the repo (patterns to copy)
-- Entry point pattern: `pr/src/main.jsx` uses `createRoot(...).render(<StrictMode><App/></StrictMode>)` — use the same mount style for new React demos.
-- Routing skeleton: `pr/src/App.jsx` intends to use React Router — import and return a top-level router component and put routes into `Routes`.
+2. **Modify accessibility controls**: 
+   - Edit the panel DOM and state logic in App.jsx lines 50-110 (Brightness and Font Size sections)
 
-When you cannot find guidance
-- If a subfolder lacks `package.json` or README, treat it as a static resource collection. Ask the user whether to create a new package boundary before introducing new build tooling.
+3. **Update carousel items**: 
+   - Edit `CAROUSEL_ITEMS` array in `pr/src/pages/Home.jsx` (add id, title, description, image)
 
-Please review and tell me any missing project areas or workflows to include.
+4. **Backend route**: 
+   - Add path to `Back End/1/holitas123/holitas123/urls.py` and corresponding view in app's `views.py`
+
+## Dependencies
+- **Frontend**: `react@^19.2.6`, `react-dom@^19.2.6`, `react-router-dom@^7.17.0`, Vite, React Compiler
+- **Backend**: Django 5.1.4, sqlite3
+- **No cross-project API bridge**: Each subproject runs independently
+
+## Before Large Changes
+1. Run the dev server first (`npm run dev` in `pr/`) to catch real errors
+2. Lint incrementally (`npm run lint`) while editing
+3. Use Vite HMR for fast iteration — single file edits reload in browser instantly
+4. Test accessibility: use the floating panel on every new page element

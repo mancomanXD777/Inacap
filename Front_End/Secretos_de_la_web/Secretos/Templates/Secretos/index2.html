@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso|Misterios</title>
+<link rel="stylesheet" href="{% static 'Secretos/style2.css' %}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Enigmas</h1>
+
+    <p id="titulo">
+        Inicia sesión para descubrir los secretos.
+    </p>
+
+    <form id="formulario">
+
+        <input type="text" id="usuario" placeholder="Usuario" required>
+
+        <input type="password" id="password" placeholder="Contraseña" required>
+
+        <button type="submit" id="botonPrincipal">
+            Iniciar sesión
+        </button>
+
+    </form>
+
+    <div class="link">
+        <a href="#" onclick="cambiarModo()">
+            <span id="textoCambio">
+                ¿No tienes cuenta? Crear una
+            </span>
+        </a>
+    </div>
+
+    <div class="mensaje" id="mensaje"></div>
+
+</div>
+
+<script>
+let modoRegistro = false;
+
+function cambiarModo(){
+    modoRegistro = !modoRegistro;
+
+    const titulo = document.getElementById("titulo");
+    const boton = document.getElementById("botonPrincipal");
+    const textoCambio = document.getElementById("textoCambio");
+    const mensaje = document.getElementById("mensaje");
+
+    mensaje.textContent = "";
+
+    if(modoRegistro){
+        titulo.textContent = "Crea una cuenta para entrar al misterio.";
+        boton.textContent = "Crear cuenta";
+        textoCambio.textContent = "¿Ya tienes cuenta? Iniciar sesión";
+    }else{
+        titulo.textContent = "Inicia sesión para descubrir los secretos.";
+        boton.textContent = "Iniciar sesión";
+        textoCambio.textContent = "¿No tienes cuenta? Crear una";
+    }
+}
+
+document.getElementById("formulario").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const usuario = document.getElementById("usuario").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const mensaje = document.getElementById("mensaje");
+
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    if(modoRegistro){
+
+        const existe = usuarios.find(u => u.usuario === usuario);
+
+        if(existe){
+            mensaje.textContent = "Ese usuario ya existe.";
+            return;
+        }
+
+        usuarios.push({
+            usuario: usuario,
+            password: password
+        });
+
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+        mensaje.textContent = "Cuenta creada correctamente.";
+
+        document.getElementById("formulario").reset();
+
+        cambiarModo();
+
+    }else{
+
+        const usuarioValido = usuarios.find(
+            u => u.usuario === usuario && u.password === password
+        );
+
+        if(usuarioValido){
+
+            localStorage.setItem("usuarioActivo", usuario);
+
+            alert("Bienvenido, " + usuario + ". Los secretos te esperan...");
+
+            window.location.href = "index.html";
+
+        }else{
+            mensaje.textContent = "Usuario o contraseña incorrectos.";
+        }
+    }
+});
+</script>
+
+</body>
+</html>
